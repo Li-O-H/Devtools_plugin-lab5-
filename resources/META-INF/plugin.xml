@@ -1,0 +1,37 @@
+<idea-plugin>
+  <id>com.leon.forumsPlugin</id>
+  <name>OpenForums</name>
+  <version>1.0</version>
+  <vendor email="leon25022002@gmail.com" url="https://github.com/Li-O-H">Leon Galstyan</vendor>
+
+  <description><![CDATA[
+      Helps to search in IT forums easier.
+      You just need to press Ctrl+Alt+F, enter your text -
+      and you get forums opened in your browser with your text already searched.
+    ]]></description>
+
+  <change-notes><![CDATA[
+
+    ]]>
+  </change-notes>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="OpenForums" class="OpenForumsAction" text="Open forums"
+            description="Contains the whole logic of plugin">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt F"/>
+    </action>
+  </actions>
+
+</idea-plugin>
