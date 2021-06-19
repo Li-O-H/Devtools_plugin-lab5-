@@ -81,4 +81,9 @@ public class OpenForumsAction extends AnAction {
             BrowserUtil.browse(forum.getUrl(textToSearch));
         }
     }
+
+    @Override
+    public boolean isDumbAware(){
+        return true;
+    }
 }
