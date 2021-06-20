@@ -2,6 +2,7 @@ import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.ui.messages.MessageDialog;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -35,7 +36,7 @@ public class OpenForumsAction extends AnAction {
             }
         },
 
-        STACK_OVERFLOW_RU{
+        STACK_OVERFLOW_RU {
             @Override
             public String getUrl(String textToSearch) {
                 String encodedText = URLEncoder.encode(textToSearch, StandardCharsets.UTF_8);
@@ -43,7 +44,7 @@ public class OpenForumsAction extends AnAction {
             }
         },
 
-        CYBERFORUM{
+        CYBERFORUM {
             @Override
             public String getUrl(String textToSearch) {
                 String encodedText = URLEncoder.encode(textToSearch, StandardCharsets.UTF_8);
@@ -51,7 +52,7 @@ public class OpenForumsAction extends AnAction {
             }
         },
 
-        CODEPROJECT{
+        CODEPROJECT {
             @Override
             public String getUrl(String textToSearch) {
                 String encodedText = URLEncoder.encode(textToSearch, StandardCharsets.UTF_8);
@@ -67,14 +68,19 @@ public class OpenForumsAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        String textToSearch = Messages.showInputDialog("Enter the text you want to search",
-                "OpenForums", Messages.getQuestionIcon());
+        Messages.InputDialog textInput = new Messages.InputDialog("Enter the text you want to search",
+                "OpenForums", Messages.getQuestionIcon(), null, null);
+        textInput.setResizable(false);
+        textInput.setSize(1000, 350);
+        textInput.show();
+        String textToSearch = textInput.getInputString();
         if (textToSearch == null) {
             return;
         }
         if (textToSearch.isEmpty()) {
-            Messages.showMessageDialog("Error: Text to search can't be empty",
-                    "OpenForums", Messages.getErrorIcon());
+            MessageDialog m= new MessageDialog("Error: Text to search can't be empty", "OpenForums", new String[]{"Ok"}, 0, Messages.getErrorIcon());
+            m.setResizable(false);
+            m.show();
             return;
         }
         for (Forums forum : forumsList) {
@@ -83,7 +89,7 @@ public class OpenForumsAction extends AnAction {
     }
 
     @Override
-    public boolean isDumbAware(){
+    public boolean isDumbAware() {
         return true;
     }
 }
