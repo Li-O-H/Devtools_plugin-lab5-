@@ -1,3 +1,5 @@
+# OpenForums-plugin
+
 This is my project for DevTools subject at my university.
 
 **OpenForums** is a plugin for *IntelliJ* platform that helps you to search on forums faster and easier.
