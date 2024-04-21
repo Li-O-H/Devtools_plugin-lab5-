@@ -2,6 +2,8 @@
 
 This is my project for DevTools subject at my university.
 
+[Лабораторная работа](./DevTools%20lab5%20Galstyan%20M32011.pdf)
+
 **OpenForums** is a plugin for *IntelliJ* platform that helps you to search on forums faster and easier.
 Press *Ctrl+Alt+F*, and you get input for your search request.
 
